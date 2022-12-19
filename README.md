@@ -1,4 +1,4 @@
-# neurolab-conda
+# lab-conda
 
 Command to run demo.py file:
 
