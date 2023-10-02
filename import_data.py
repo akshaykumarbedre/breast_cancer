@@ -5,24 +5,17 @@ import pandas as pd
 import os 
 from dataclasses import dataclass
 
-@dataclass
-class Data_config:
-    path=os.path.join("artifect","data.csv")
-class Load_data:
+from sklearn.datasets import load_breast_cancer
+from src.utils import upload_to_mongoDB
+class load_dataset():
     def __init__(self):
-        self.data_path=Data_config()
-    def load(self):
-        try:
-            data = load_breast_cancer()
-            x=pd.DataFrame(data.data,columns=data.feature_names)
-            x['target']=pd.Series(data.target)
-            logging.info(str(x)) 
-            x.to_csv(self.data_path.path,index=False)
-            logging.info("data saved sucessfully")
-        except:
-            logging.error('problem in data laod')
+        pass
+    def load_toDatase(self):            
+        data_set=load_breast_cancer()
+        df=pd.DataFrame(data_set.data,columns=data_set.feature_names)
+        df['target']=pd.Series(data_set.target)
+        upload_to_mongoDB(df)
 
 
-# if __init__=="__main__":
-l1=Load_data()
-l1.load()
+data=load_dataset()
+data.load_toDatase()
