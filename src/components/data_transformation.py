@@ -32,6 +32,7 @@ class Data_transform:
             test_x=test_file.drop('target',axis=1)
             test_y=test_file['target']
             test_x_proceed=self.pipeline_process(test_x)
+            print(test_x.columns)
 
             test_x_proceed['target']=test_y
                        

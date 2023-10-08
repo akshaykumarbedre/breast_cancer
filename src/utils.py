@@ -48,3 +48,11 @@ def save_model(pkl,path):
     except Exception as e:
         logging.error('error in dump in obj')
         raise CustomException(str(e), sys)
+
+def load_object(file_path):
+    try:
+        with open(file_path,'rb') as file_obj:
+            return pickle.load(file_obj)
+    except Exception as e:
+        logging.info('Exception Occured in load_object function utils')
+        raise CustomException(e,sys)
